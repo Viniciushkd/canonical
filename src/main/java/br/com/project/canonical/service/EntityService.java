@@ -39,5 +39,4 @@ public class EntityService {
 		return new ResponseDto<>(entityDto);
 	}
 	
-	
 }
