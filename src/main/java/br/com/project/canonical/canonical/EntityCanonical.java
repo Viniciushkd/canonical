@@ -11,6 +11,8 @@ public class EntityCanonical implements IEntityCanonical {
 	 */
 	private static final long serialVersionUID = -4259297471464788629L;
 
+	private final String requestId;
+	
 	private final String firstName;
 	
 	private final String lastName;
@@ -20,17 +22,20 @@ public class EntityCanonical implements IEntityCanonical {
 	private final java.util.Date date;
 	
 	public EntityCanonical(final Builder builder) {
+		this.requestId = builder.requestId;
 		this.firstName = builder.firstName;
 		this.lastName = builder.lastName;
 		this.age = builder.age;
 		this.date = builder.date;
 	}
 	
-	public static class Builder implements FirstName, LastName, Age, Date {
+	public static class Builder implements RequestId, FirstName, LastName, Age, Date {
+		private String requestId;
 		private String firstName;
 		private String lastName;
 		private int age;
 		private java.util.Date date;
+		
 		
 		@Override
 		public Age date(java.util.Date date) {
@@ -52,12 +57,18 @@ public class EntityCanonical implements IEntityCanonical {
 			this.firstName = firstName;
 			return this;
 		}
+		@Override
+		public Builder requestId(final String requestId) {
+			this.requestId = requestId;
+			return this;
+		}
 		
 		public EntityCanonical build() {
 			return new EntityCanonical(this);
 		}
 	}
 
+	
 	public interface Date {
 		public Age date(java.util.Date date);
 	}
@@ -71,13 +82,21 @@ public class EntityCanonical implements IEntityCanonical {
 	}
 	
 	public interface FirstName {
-		public Builder firstName(final String firstName);
+		public RequestId firstName(String firstName);
+	}
+	
+	public interface RequestId {
+		public Builder requestId(final String requestId);
 	}
 	
 	public static final Date builder() {
 		return new Builder();
 	}
-
+	
+	@Override
+	public String requestId() {
+		return requestId;
+	}
 	@Override
 	public String firstName() {
 		return firstName;

@@ -7,6 +7,8 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class EntityDto implements Serializable {
 
 	/**
@@ -14,11 +16,19 @@ public class EntityDto implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private String requestId;
 	private String firstName;
 	private String lastName;
 	private int age;
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm", timezone = "America/Sao_Paulo")
 	private Date date;
 	
+	public String getRequestId() {
+		return requestId;
+	}
+	public void setRequestId(String requestId) {
+		this.requestId = requestId;
+	}
 	public String getFirstName() {
 		return firstName;
 	}

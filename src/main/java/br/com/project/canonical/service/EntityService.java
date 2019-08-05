@@ -1,42 +1,38 @@
 package br.com.project.canonical.service;
 
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 import br.com.project.canonical.canonical.EntityCanonical;
-import br.com.project.canonical.dto.EntityDto;
-import br.com.project.canonical.dto.ResponseDto;
-import br.com.project.canonical.event.EntityEvent;
+import br.com.project.canonical.data.Entity;
+import br.com.project.canonical.event.Event;
 import br.com.project.canonical.event.Publisher;
+import br.com.project.canonical.repository.EntityRepository;
 
 @Component
-public class EntityService {
+@Transactional
+public class EntityService implements IEntityService{
 	
 	@Autowired
-	private Publisher publisher;
+	private Publisher<EntityCanonical> publisher;
+	@Autowired
+	private EntityRepository repository;
 
-	private final Converter<EntityDto, EntityCanonical> entityDtoToEntityCanonicalConverter;
-	private final Converter<EntityCanonical, EntityDto> entityCanonicalToEntityDtoConverter;
-
-	public EntityService(
-			final Converter<EntityDto, EntityCanonical> entityDtoToEntityCanonicalConverter,
-			final Converter<EntityCanonical, EntityDto> entityCanonicalToEntityDtoConverter) {
-		this.entityDtoToEntityCanonicalConverter = entityDtoToEntityCanonicalConverter;
-		this.entityCanonicalToEntityDtoConverter = entityCanonicalToEntityDtoConverter;
+	/**
+	 * 
+	 * @param dto
+	 * @return
+	 */
+	public void save(final EntityCanonical canonical) {
+		publisher.publishEntity(new Event<EntityCanonical>(this, canonical));
 	}
 	
-	public ResponseDto<EntityDto> convertEntity(final EntityDto dto) {
-		final EntityCanonical canonical = entityDtoToEntityCanonicalConverter.convert(dto);
-		
-		// ...
-		
-		publisher.publishEntity(new EntityEvent(this, canonical));
-		
-		// ...
-		
-		final EntityDto entityDto = entityCanonicalToEntityDtoConverter.convert(canonical);
-		return new ResponseDto<>(entityDto);
+	public List<Entity> list() {
+		return this.repository.findAll();
 	}
 	
 }

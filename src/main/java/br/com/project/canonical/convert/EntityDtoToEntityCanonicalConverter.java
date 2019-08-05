@@ -1,6 +1,7 @@
 package br.com.project.canonical.convert;
 
 import java.util.Date;
+import java.util.UUID;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.core.convert.converter.Converter;
@@ -22,6 +23,7 @@ public class EntityDtoToEntityCanonicalConverter implements Converter<EntityDto,
 					.age(source.getAge())
 					.lastName(source.getLastName())
 					.firstName(source.getFirstName())
+					.requestId(UUID.randomUUID().toString())
 					.build();
 		} catch (final Exception e) {
 			return null;

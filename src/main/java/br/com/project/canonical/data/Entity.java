@@ -20,11 +20,19 @@ public class Entity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
+	private String requestId;
 	private String firstName;
 	private String lastName;
 	private int age;
 	private Date date;
 	
+	
+	public String getRequestId() {
+		return requestId;
+	}
+	public void setRequestId(String requestId) {
+		this.requestId = requestId;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
