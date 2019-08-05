@@ -31,7 +31,7 @@ public class EntityListener {
 	 * @param canonical
 	 */
 	private void save(EntityCanonical canonical) {
-		final Entity entity = entityCanonicalToEntityConverter.convert(canonical);
+		final Entity entity = this.entityCanonicalToEntityConverter.convert(canonical);
 		repository.save(entity);
 	}
 	/**

@@ -15,7 +15,7 @@ import br.com.project.canonical.repository.EntityRepository;
 
 @Component
 @Transactional
-public class EntityService implements IEntityService{
+public class EntityService implements IEntityService {
 	
 	@Autowired
 	private Publisher<EntityCanonical> publisher;
@@ -24,13 +24,13 @@ public class EntityService implements IEntityService{
 
 	/**
 	 * 
-	 * @param dto
-	 * @return
 	 */
 	public void save(final EntityCanonical canonical) {
-		publisher.publishEntity(new Event<EntityCanonical>(this, canonical));
+		this.publisher.publishEntity(new Event<EntityCanonical>(this, canonical));
 	}
-	
+	/**
+	 * 
+	 */
 	public List<Entity> list() {
 		return this.repository.findAll();
 	}
