@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class Publisher implements ApplicationEventPublisherAware {
+public class Publisher<T> implements ApplicationEventPublisherAware {
 
 	private ApplicationEventPublisher publisher;
 	
@@ -15,7 +15,7 @@ public class Publisher implements ApplicationEventPublisherAware {
 		this.publisher = publisher;
 	}
 
-	public void publishEntity(EntityEvent event) {
+	public void publishEntity(Event<T> event) {
 	    this.publisher.publishEvent(event);
 	}
 }

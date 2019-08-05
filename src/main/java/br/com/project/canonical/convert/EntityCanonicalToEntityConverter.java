@@ -11,7 +11,7 @@ import br.com.project.canonical.data.Entity;
 @Lazy
 @Component
 public class EntityCanonicalToEntityConverter implements Converter<EntityCanonical, Entity> {
-
+	
 	@Override
 	public Entity convert(EntityCanonical source) {
 		try {
@@ -20,6 +20,7 @@ public class EntityCanonicalToEntityConverter implements Converter<EntityCanonic
 					.setLastName(source.lastName())
 					.setAge(source.age())
 					.setDate(source.date())
+					.setRequestId(source.requestId())
 					.build();
 		} catch (Exception e) {
 			return null;
