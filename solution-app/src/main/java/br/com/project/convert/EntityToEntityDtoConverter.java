@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import br.com.project.build.EntityDtoBuilder;
+import br.com.project.builder.EntityDtoBuilder;
 import br.com.project.data.Entity;
 import br.com.project.dto.EntityDto;
 
