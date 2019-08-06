@@ -1,0 +1,17 @@
+apply plugin: 'java-library' 
+
+group = 'br.com.project'
+version = '1.0.0'
+sourceCompatibility = '1.8' 
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+    compile project(':solution-data')
+	compile('com.h2database:h2:1.4.191')
+	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
+}

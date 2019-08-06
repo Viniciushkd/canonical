@@ -22,6 +22,8 @@ targetCompatibility = 1.8
 
 dependencies {
 	compile project(':solution-app') 
+	compile project(':solution-canonical') 
+	compile project(':solution-data') 
 } 
 
 allprojects {
