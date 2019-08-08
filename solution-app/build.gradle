@@ -29,11 +29,11 @@ dependencies {
 		compile project(':solution-data')
 		compile project(':solution-canonical')
 		compile('org.springframework.boot:spring-boot-starter-web')
-		compile('org.springframework.boot:spring-boot-starter-data-jpa')
-		compile('com.h2database:h2:1.4.191')
 		compile('org.flywaydb:flyway-core')
-		compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
 
+		compile group: 'com.hazelcast', name: 'hazelcast', version: '3.12'
+		compile group: 'org.springframework.retry', name: 'spring-retry', version: '1.2.2.RELEASE'
+		
 	    testCompile("junit:junit")
 		testCompile('org.springframework.boot:spring-boot-starter-test')
 }

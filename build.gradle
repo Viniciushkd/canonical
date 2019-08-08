@@ -24,6 +24,7 @@ dependencies {
 	compile project(':solution-app') 
 	compile project(':solution-canonical') 
 	compile project(':solution-data') 
+	compile project(':notify') 
 } 
 
 allprojects {

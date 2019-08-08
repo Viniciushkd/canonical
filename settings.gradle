@@ -10,6 +10,7 @@
  
  include 'solution-app',
  		 'solution-canonical',
- 		 'solution-data'
+ 		 'solution-data',
+ 		 'notify'
 
 rootProject.name = 'solution'
