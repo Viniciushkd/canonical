@@ -1,0 +1,43 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.3.RELEASE'
+	}
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'br.com.project'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+		compile project(':solution-canonical')
+		compile('org.springframework.boot:spring-boot-starter-web')
+		compile('org.flywaydb:flyway-core')
+
+		compile group: 'com.hazelcast', name: 'hazelcast', version: '3.12'
+		compile group: 'org.springframework.retry', name: 'spring-retry', version: '1.2.2.RELEASE'
+		
+	    testCompile("junit:junit")
+		testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+war {
+    baseName = 'notify'
+    version =  "1.0.0"
+}
