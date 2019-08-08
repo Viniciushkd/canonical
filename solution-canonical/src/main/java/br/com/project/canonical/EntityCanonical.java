@@ -53,7 +53,7 @@ public class EntityCanonical implements IEntityCanonical {
 			return this;
 		}
 		@Override
-		public Builder firstName(String firstName) {
+		public RequestId firstName(String firstName) {
 			this.firstName = firstName;
 			return this;
 		}
