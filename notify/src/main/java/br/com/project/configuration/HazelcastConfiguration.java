@@ -26,9 +26,9 @@ public class HazelcastConfiguration {
 	private final String queueNotify;
 	
 	public HazelcastConfiguration(
-			@Value("${hazelcast.configuration.instance.name:linx-mail-service}") final String hazelcastInstanceName,
+			@Value("${hazelcast.configuration.instance.name:hazelcast-solution}") final String hazelcastInstanceName,
 			@Value("${hazelcast.configuration.network.host:localhost}") final String host,
-			@Value("${hazelcast.configuration.network.port:9919}") final Integer port,
+			@Value("${hazelcast.configuration.network.port:9910}") final Integer port,
 			@Value("${hazelcast.configuration.queue.name.notify:notifyQueue}") final String queueNotify) {
 		this.hazelcastInstanceName = hazelcastInstanceName;
 		this.host = host;
@@ -109,9 +109,9 @@ public class HazelcastConfiguration {
 	 */
 	@Bean
 	public IQueue<NotifyCanonical> queue(final HazelcastInstance hazelcastInstance, final ReciptionNotifyListener reciptionListener) {
-		final IQueue<NotifyCanonical> mailQueue = hazelcastInstance.getQueue(queueNotify);
+		final IQueue<NotifyCanonical> queue = hazelcastInstance.getQueue(queueNotify);
 		final Boolean includeValue = Boolean.FALSE;
-		mailQueue.addItemListener(reciptionListener, includeValue);
-		return mailQueue;
+		queue.addItemListener(reciptionListener, includeValue);
+		return queue;
 	}
 }

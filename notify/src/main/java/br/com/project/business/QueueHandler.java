@@ -26,10 +26,10 @@ public class QueueHandler {
 	private final IQueue<NotifyCanonical> queue;
 	/**
 	 * 
-	 * @param mailQueue
+	 * @param queue
 	 */
-	public QueueHandler(IQueue<NotifyCanonical> mailQueue) {
-		this.queue = mailQueue;
+	public QueueHandler(IQueue<NotifyCanonical> queue) {
+		this.queue = queue;
 	}
 	/**
 	 * 

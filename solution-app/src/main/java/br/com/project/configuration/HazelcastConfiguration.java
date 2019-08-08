@@ -120,14 +120,14 @@ public class HazelcastConfiguration {
 	/**
 	 * 
 	 * @param hazelcastInstance
-	 * @param mailListener
+	 * @param listener
 	 * @return
 	 */
 	@Bean
 	public ITopic<Event<NotifyCanonical>> topic(final HazelcastInstance hazelcastInstance, final NotifyListener listener) {
-		final ITopic<Event<NotifyCanonical>> mailTopic = hazelcastInstance.getTopic(topicNotify);
-		mailTopic.addMessageListener(listener);
-		return mailTopic;
+		final ITopic<Event<NotifyCanonical>> topic = hazelcastInstance.getTopic(topicNotify);
+		topic.addMessageListener(listener);
+		return topic;
 	}
 }
 
