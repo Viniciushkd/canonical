@@ -1,5 +1,8 @@
-# solution
-Gradle - Groovy - Java Application, Spring Boot, Spting Data, JPA, H2, Event Listener, Model Canonical, Flyway, Hazelcast
+Esta aplicação tem como finalidade apresentar uma solução de micro-serviço baseada em Rest API, desenvolvida em Java.
 
-## __Post__
-``` {"firstName":"", "lastName":"", "age":0} ```
+Baseando-se em:
+
+- Modelo Canonical.
+- Eventos da aplicação.
+- Log de transação.
+- Repositório NEXUS.
